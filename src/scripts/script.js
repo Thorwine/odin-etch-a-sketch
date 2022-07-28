@@ -1,13 +1,12 @@
-// const btnSquares = document.querySelector('#squares');
-// btnSquares.addEventListener('click', getSquares);
 
-createGrid(32);
+// create grid on startup with fixed edgeLength
+let squares = 32;
+createGrid(squares);
 
-// mouseover event
-const div = document.querySelectorAll('.myContainer .myDiv');
-for (let i = 0; i < div.length; i++) {
-  div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = 'red');
-}
+// button to select squares and refresh grid
+const btnSquares = document.querySelector('#btnSquares');
+btnSquares.addEventListener('click', refreshGrid);
+
 
 // --------------- FUNCTIONS --------------- //
 
@@ -24,4 +23,32 @@ function createGrid(squares) {
     div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: white; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px; outline: 1px solid limegreen;';
     container.appendChild(div);
   }
+
+  const div = document.querySelectorAll('.myContainer .myDiv');
+  for (let i = 0; i < div.length; i++) {
+    div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = 'red');
+  }
 }
+// ----------------------------------------- //
+
+function deleteGrid() {
+  const container = document.querySelector('.myContainer');
+  let nodes = container.childNodes.length;
+
+  for (let i = 0; i < nodes; i++) {
+    container.removeChild(container.firstElementChild);
+  }
+}
+// ----------------------------------------- //
+
+function refreshGrid() {
+  let squares = prompt('Edge length in squares? (Max. is 100) ', '32')
+
+  if (squares <= 100) {
+    deleteGrid();
+    createGrid(squares);
+  } else {
+    refreshGrid()
+  }
+}
+// ----------------------------------------- //

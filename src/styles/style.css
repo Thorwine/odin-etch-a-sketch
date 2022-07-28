@@ -13,12 +13,13 @@ button {
   align-self: flex-start;
 }
 
-.header {
+.myHeader {
   width: 960px;
   display: flex;
 }
 
 .myContainer {
+  background-color: gray;
   width: 960px;
   height: 960px;
   display: flex;
