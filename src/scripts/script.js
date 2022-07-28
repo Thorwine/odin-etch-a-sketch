@@ -15,6 +15,10 @@ btnChoice.addEventListener('click', () => setColor('black'));
 const btnRandom = document.querySelector('#btnRandom');
 btnRandom.addEventListener('click', () => setColor('random'));
 
+// button for fade to black
+const btnFader = document.querySelector('#btnFader');
+btnFader.addEventListener('click', () => setColor('fader'));
+
 // button to select color randomizer
 const btnReset = document.querySelector('#btnReset');
 btnReset.addEventListener('click', () => resetGrid());
@@ -51,6 +55,7 @@ function deleteGrid() {
 function resetGrid() {
   deleteGrid();
   createGrid(32);
+  console.clear();
 }
 // ----------------------------------------- //
 
@@ -76,9 +81,15 @@ function setColor(color) {
       div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = randomColor);
     }
   } else if (color === 'fader') {
-
-    // ToDo
-
+    let rgb = 255;
+    let faderColor = 'rgb(' + rgb + ',' + rgb + ',' + rgb + ');';
+    for (let i = 0; i < div.length; i++) {
+      div[i].addEventListener('mouseover', function () {
+        rgb = rgb - 5;
+        faderColor = 'rgb(' + rgb + ',' + rgb + ',' + rgb + ')';
+        div[i].style.backgroundColor = faderColor;
+      });
+    }
   }
   else {
     for (let i = 0; i < div.length; i++) {
