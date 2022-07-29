@@ -1,6 +1,6 @@
 
 // create grid on startup with fixed edgeLength
-let squares = 32;
+let squares = 24;
 createGrid(squares);
 
 // button to select squares and refresh grid
@@ -24,7 +24,7 @@ btnReset.addEventListener('click', () => resetGrid());
 function createGrid(squares) {
 
   let gridSize = squares * squares;
-  let edgeLength = 960 / squares;
+  let edgeLength = 640 / squares;
 
   const sketchpad = document.querySelector('.sketchpad');
 
