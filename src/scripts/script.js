@@ -7,10 +7,6 @@ createGrid(squares);
 const btnSquares = document.querySelector('#btnSquares');
 btnSquares.addEventListener('click', resizeGrid);
 
-// button to select color (ToDo - just black for now)
-const btnChoice = document.querySelector('#btnChoice');
-btnChoice.addEventListener('click', () => setColor('black'));
-
 // button to select color randomizer
 const btnRandom = document.querySelector('#btnRandom');
 btnRandom.addEventListener('click', () => setColor('random'));
@@ -30,24 +26,24 @@ function createGrid(squares) {
   let gridSize = squares * squares;
   let edgeLength = 960 / squares;
 
-  const container = document.querySelector('.myContainer');
+  const sketchpad = document.querySelector('.sketchpad');
 
   for (let i = 0; i < gridSize; i++) {
     const div = document.createElement('div');
     div.classList.toggle('myDiv');
-    div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: white; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px; outline: 1px solid limegreen;';
-    container.appendChild(div);
+    div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: lightgrey; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px;';
+    sketchpad.appendChild(div);
   }
   setColor('black');
 }
 // ----------------------------------------- //
 
 function deleteGrid() {
-  const container = document.querySelector('.myContainer');
-  let nodes = container.childNodes.length;
+  const sketchpad = document.querySelector('.sketchpad');
+  let nodes = sketchpad.childNodes.length;
 
   for (let i = 0; i < nodes; i++) {
-    container.removeChild(container.firstElementChild);
+    sketchpad.removeChild(sketchpad.firstElementChild);
   }
 }
 // ----------------------------------------- //
@@ -60,9 +56,9 @@ function resetGrid() {
 // ----------------------------------------- //
 
 function resizeGrid() {
-  let squares = prompt('Edge length in squares? (Max. is 100) ', '32')
+  let squares = prompt('Edge length in squares? (Max. is 64) ', '32')
 
-  if (squares <= 100) {
+  if (squares <= 64) {
     deleteGrid();
     createGrid(squares);
   } else {
@@ -73,7 +69,7 @@ function resizeGrid() {
 
 function setColor(color) {
 
-  const div = document.querySelectorAll('.myContainer .myDiv');
+  const div = document.querySelectorAll('.sketchpad .myDiv');
 
   if (color === 'random') {
     for (let i = 0; i < div.length; i++) {
