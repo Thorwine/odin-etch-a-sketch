@@ -1,13 +1,13 @@
 
 // create grid on startup with fixed edgeLength
-let squares = 24;
+let squares = 16;
 createGrid(squares);
 
-// button to select squares and refresh grid
+// button to select grid size
 const btnSquares = document.querySelector('#btnSquares');
 btnSquares.addEventListener('click', resizeGrid);
 
-// button to select color randomizer
+// button for rainbow color
 const btnRandom = document.querySelector('#btnRandom');
 btnRandom.addEventListener('click', () => setColor('random'));
 
@@ -15,7 +15,7 @@ btnRandom.addEventListener('click', () => setColor('random'));
 const btnFader = document.querySelector('#btnFader');
 btnFader.addEventListener('click', () => setColor('fader'));
 
-// button to select color randomizer
+// button to reset grid
 const btnReset = document.querySelector('#btnReset');
 btnReset.addEventListener('click', () => resetGrid());
 
@@ -50,13 +50,13 @@ function deleteGrid() {
 
 function resetGrid() {
   deleteGrid();
-  createGrid(32);
+  createGrid(16);
   console.clear();
 }
 // ----------------------------------------- //
 
 function resizeGrid() {
-  let squares = prompt('Edge length in squares? (Max. is 64) ', '32')
+  let squares = prompt('Edge length in squares? (Max. is 64) ', '16')
 
   if (squares <= 64) {
     deleteGrid();
