@@ -17,7 +17,7 @@ btnFader.addEventListener('click', () => setColor('fader'));
 
 // button to reset grid
 const btnReset = document.querySelector('#btnReset');
-btnReset.addEventListener('click', () => resetGrid());
+btnReset.addEventListener('click', () => resetGrid(squares));
 
 // --------------- FUNCTIONS --------------- //
 
@@ -48,15 +48,15 @@ function deleteGrid() {
 }
 // ----------------------------------------- //
 
-function resetGrid() {
+function resetGrid(squares) {
   deleteGrid();
-  createGrid(16);
+  createGrid(squares);
   console.clear();
 }
 // ----------------------------------------- //
 
 function resizeGrid() {
-  let squares = prompt('Edge length in squares? (Max. is 64) ', '16')
+  squares = prompt('Edge length in squares? (Max. is 64) ', '16')
 
   if (squares <= 64) {
     deleteGrid();
