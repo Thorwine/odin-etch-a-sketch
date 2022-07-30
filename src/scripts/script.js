@@ -20,6 +20,10 @@ btnFader.addEventListener('click', () => setColor('fader'));
 const btnReset = document.querySelector('#btnReset');
 btnReset.addEventListener('click', () => resetGrid(squares));
 
+//button to toggle grid lines
+const btnToggle = document.querySelector('#btnToggle');
+btnToggle.addEventListener('click', () => toggleGridLines());
+
 // --------------- FUNCTIONS --------------- //
 
 function createGrid(squares) {
@@ -32,6 +36,7 @@ function createGrid(squares) {
   for (let i = 0; i < gridSize; i++) {
     const div = document.createElement('div');
     div.classList.toggle('myDiv');
+    div.classList.toggle('gridlines');
     div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: lightgrey; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px;';
     sketchpad.appendChild(div);
   }
@@ -52,7 +57,6 @@ function deleteGrid() {
 function resetGrid(squares) {
   deleteGrid();
   createGrid(squares);
-  console.clear();
 }
 // ----------------------------------------- //
 
@@ -67,6 +71,15 @@ function resizeGrid() {
     resizeGrid()
   }
 }
+// ----------------------------------------- //
+
+function toggleGridLines() {
+  const myNodeList = document.querySelectorAll('.myDiv');
+  for (let i = 0; i < myNodeList.length; i++) {
+    myNodeList[i].classList.toggle('gridlines');
+  }
+}
+
 // ----------------------------------------- //
 
 function setColor(color) {

@@ -60,12 +60,12 @@ button {
   flex-wrap: wrap;
 }
 
-.myDiv {
+.gridlines {
   outline: 1px solid limegreen;
 }
 
 button {
-  width: 200px;
+  width: 250px;
   height: 40px;
   background-color: #a2a86a;
   color: #20170e;
