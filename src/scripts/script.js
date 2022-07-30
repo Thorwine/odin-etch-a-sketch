@@ -6,6 +6,7 @@ createGrid(squares);
 // button to select grid size
 const btnSquares = document.querySelector('#btnSquares');
 btnSquares.addEventListener('click', resizeGrid);
+btnSquares.textContent = ('Grid Size 16x16');
 
 // button for rainbow color
 const btnRandom = document.querySelector('#btnRandom');
@@ -61,6 +62,7 @@ function resizeGrid() {
   if (squares <= 64) {
     deleteGrid();
     createGrid(squares);
+    btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
   } else {
     resizeGrid()
   }
