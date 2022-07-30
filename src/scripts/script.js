@@ -24,6 +24,10 @@ btnReset.addEventListener('click', () => resetGrid(squares));
 const btnToggle = document.querySelector('#btnToggle');
 btnToggle.addEventListener('click', () => toggleGridLines());
 
+// get color from colorpicker
+let input = document.getElementById("colorpicker");
+input.addEventListener("input", () => setColor(input.value));
+
 // --------------- FUNCTIONS --------------- //
 
 function createGrid(squares) {

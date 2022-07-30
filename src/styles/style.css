@@ -64,7 +64,19 @@ button {
   outline: 1px solid limegreen;
 }
 
-button {
+.color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+span {
+  background-color: #a2a86a;
+}
+
+button,
+.color {
   width: 250px;
   height: 40px;
   background-color: #a2a86a;
