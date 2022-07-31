@@ -1,32 +1,31 @@
-
-// create grid on startup with fixed edgeLength
-let squares = 16;
-createGrid(squares);
-
 // button to select grid size
 const btnSquares = document.querySelector('#btnSquares');
 btnSquares.addEventListener('click', resizeGrid);
 btnSquares.textContent = ('Grid Size 16x16');
 
-// button for rainbow color
+// get color from input 'penColor'
+let inputPen = document.getElementById("penColor");
+inputPen.addEventListener("input", () => setColor(inputPen.value));
+
+// button random color
 const btnRandom = document.querySelector('#btnRandom');
 btnRandom.addEventListener('click', () => setColor('random'));
 
-// button for fade to black
+// button fade to black
 const btnFader = document.querySelector('#btnFader');
 btnFader.addEventListener('click', () => setColor('fader'));
 
-// button to reset grid
-const btnReset = document.querySelector('#btnReset');
-btnReset.addEventListener('click', () => resetGrid(squares));
-
-//button to toggle grid lines
+// button toggle grid lines
 const btnToggle = document.querySelector('#btnToggle');
 btnToggle.addEventListener('click', () => toggleGridLines());
 
-// get color from colorpicker
-let input = document.getElementById("colorpicker");
-input.addEventListener("input", () => setColor(input.value));
+// button reset grid
+const btnReset = document.querySelector('#btnReset');
+btnReset.addEventListener('click', () => resetGrid(squares));
+
+// create grid on startup with fixed edgeLength
+let squares = 16;
+createGrid(squares);
 
 // --------------- FUNCTIONS --------------- //
 
@@ -44,7 +43,7 @@ function createGrid(squares) {
     div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: lightgrey; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px;';
     sketchpad.appendChild(div);
   }
-  setColor('black');
+  setColor(inputPen.value);
 }
 // ----------------------------------------- //
 
