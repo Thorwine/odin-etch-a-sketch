@@ -7,6 +7,10 @@ btnSquares.textContent = ('Grid Size 16x16');
 let inputPen = document.getElementById("penColor");
 inputPen.addEventListener("input", () => setColor(inputPen.value));
 
+// get color from input 'backgroundColor'
+let backgroundColor = document.getElementById("backgroundColor");
+backgroundColor.addEventListener("input", () => setBackground(backgroundColor.value));
+
 // button random color
 const btnRandom = document.querySelector('#btnRandom');
 btnRandom.addEventListener('click', () => setColor('random'));
@@ -40,7 +44,7 @@ function createGrid(squares) {
     const div = document.createElement('div');
     div.classList.toggle('myDiv');
     div.classList.toggle('gridlines');
-    div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: lightgrey; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px;';
+    div.style.cssText = 'width: ' + edgeLength + 'px; height: ' + edgeLength + 'px; background-color: ' + backgroundColor.value + '; display: flex; justify-content: center; align-items: center; flex: 0 0 ' + edgeLength + 'px;';
     sketchpad.appendChild(div);
   }
   setColor(inputPen.value);
@@ -82,7 +86,13 @@ function toggleGridLines() {
     myNodeList[i].classList.toggle('gridlines');
   }
 }
-
+// ----------------------------------------- //
+function setBackground(color) {
+  const myNodeList = document.querySelectorAll('.myDiv');
+  for (let i = 0; i < myNodeList.length; i++) {
+    myNodeList[i].style.backgroundColor = color;
+  }
+}
 // ----------------------------------------- //
 
 function setColor(color) {
