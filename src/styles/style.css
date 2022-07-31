@@ -75,6 +75,11 @@ span {
   background-color: #a2a86a;
 }
 
+label {
+  background-color: #a2a86a;
+  color: #20170e;
+}
+
 button,
 .color {
   width: 250px;

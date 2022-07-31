@@ -23,6 +23,10 @@ btnFader.addEventListener('click', () => setColor('fader'));
 const btnToggle = document.querySelector('#btnToggle');
 btnToggle.addEventListener('click', () => toggleGridLines());
 
+// button eraser
+const btnEraser = document.querySelector('#btnEraser');
+btnEraser.addEventListener('click', () => setColor(backgroundColor.value));
+
 // button reset grid
 const btnReset = document.querySelector('#btnReset');
 btnReset.addEventListener('click', () => resetGrid(squares));
