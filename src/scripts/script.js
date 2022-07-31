@@ -3,11 +3,15 @@ const btnSquares = document.querySelector('#btnSquares');
 btnSquares.addEventListener('click', resizeGrid);
 btnSquares.textContent = ('Grid Size 16x16');
 
-// get color from input 'penColor'
+// slider to get size from input 'gridSize'
+let gridSize = document.getElementById("gridSize");
+gridSize.addEventListener("input", () => resetGrid(gridSize.value));
+
+// colorpicker to get color from input 'penColor'
 let inputPen = document.getElementById("penColor");
 inputPen.addEventListener("input", () => setColor(inputPen.value));
 
-// get color from input 'backgroundColor'
+// colorpicker to get color from input 'backgroundColor'
 let backgroundColor = document.getElementById("backgroundColor");
 backgroundColor.addEventListener("input", () => setBackground(backgroundColor.value));
 
@@ -68,10 +72,12 @@ function deleteGrid() {
 function resetGrid(squares) {
   deleteGrid();
   createGrid(squares);
+  btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
+  gridSize.value = squares;
 }
 // ----------------------------------------- //
 
-function resizeGrid() {
+function resizeGrid(squares) {
   squares = prompt('Edge length in squares? (Max. is 64) ', '16')
 
   if (squares <= 64) {
@@ -81,6 +87,7 @@ function resizeGrid() {
   } else {
     resizeGrid()
   }
+  gridSize.value = squares;
 }
 // ----------------------------------------- //
 

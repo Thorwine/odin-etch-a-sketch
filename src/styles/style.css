@@ -21,6 +21,30 @@ button {
   align-self: flex-start;
 }
 
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 10px;
+  border-radius: 5px;
+  background-image: linear-gradient(lightgrey, grey);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #20170e;
+  cursor: ew-resize;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
 .wrapper {
   max-width: 1400px;
   margin-left: auto;
@@ -32,7 +56,6 @@ button {
   color: #a2a86a;
   font-size: 100px;
   text-align: center;
-
   box-shadow: 2px 5px 20px black;
 }
 
@@ -64,15 +87,12 @@ button {
   outline: 1px solid limegreen;
 }
 
-.color {
+.color,
+.gridSize {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-}
-
-span {
-  background-color: #a2a86a;
 }
 
 label {
@@ -81,7 +101,8 @@ label {
 }
 
 button,
-.color {
+.color,
+.gridSize {
   width: 250px;
   height: 40px;
   background-color: #a2a86a;
@@ -107,4 +128,8 @@ button:hover {
   color: #a2a86a;
   text-align: center;
   box-shadow: 2px 5px 20px black;
+}
+
+#btnSquares {
+  margin-bottom: 10px;
 }
