@@ -1,7 +1,4 @@
-// button to select grid size
-const btnSquares = document.querySelector('#btnSquares');
-btnSquares.addEventListener('click', resizeGrid);
-btnSquares.textContent = ('Grid Size 16x16');
+// INPUTS //
 
 // slider to get size from input 'gridSize'
 let gridSize = document.getElementById("gridSize");
@@ -14,6 +11,13 @@ inputPen.addEventListener("input", () => setColor(inputPen.value));
 // colorpicker to get color from input 'backgroundColor'
 let backgroundColor = document.getElementById("backgroundColor");
 backgroundColor.addEventListener("input", () => setBackground(backgroundColor.value));
+
+// BUTTONS //
+
+// button to select grid size
+const btnSquares = document.querySelector('#btnSquares');
+btnSquares.addEventListener('click', resizeGrid);
+btnSquares.textContent = ('Grid Size 16x16');
 
 // button random color
 const btnRandom = document.querySelector('#btnRandom');
@@ -35,12 +39,13 @@ btnEraser.addEventListener('click', () => setColor(backgroundColor.value));
 const btnReset = document.querySelector('#btnReset');
 btnReset.addEventListener('click', () => resetGrid(squares));
 
+// MAIN //
+
 // create grid on startup with fixed edgeLength
 let squares = 16;
 createGrid(squares);
 
 // --------------- FUNCTIONS --------------- //
-
 function createGrid(squares) {
 
   let gridSize = squares * squares;
@@ -58,54 +63,6 @@ function createGrid(squares) {
   setColor(inputPen.value);
 }
 // ----------------------------------------- //
-
-function deleteGrid() {
-  const sketchpad = document.querySelector('.sketchpad');
-  let nodes = sketchpad.childNodes.length;
-
-  for (let i = 0; i < nodes; i++) {
-    sketchpad.removeChild(sketchpad.firstElementChild);
-  }
-}
-// ----------------------------------------- //
-
-function resetGrid(squares) {
-  deleteGrid();
-  createGrid(squares);
-  btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
-  gridSize.value = squares;
-}
-// ----------------------------------------- //
-
-function resizeGrid(squares) {
-  squares = prompt('Edge length in squares? (Max. is 64) ', '16')
-
-  if (squares <= 64) {
-    deleteGrid();
-    createGrid(squares);
-    btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
-  } else {
-    resizeGrid()
-  }
-  gridSize.value = squares;
-}
-// ----------------------------------------- //
-
-function toggleGridLines() {
-  const myNodeList = document.querySelectorAll('.myDiv');
-  for (let i = 0; i < myNodeList.length; i++) {
-    myNodeList[i].classList.toggle('gridlines');
-  }
-}
-// ----------------------------------------- //
-function setBackground(color) {
-  const myNodeList = document.querySelectorAll('.myDiv');
-  for (let i = 0; i < myNodeList.length; i++) {
-    myNodeList[i].style.backgroundColor = color;
-  }
-}
-// ----------------------------------------- //
-
 function setColor(color) {
 
   const div = document.querySelectorAll('.sketchpad .myDiv');
@@ -130,6 +87,49 @@ function setColor(color) {
     for (let i = 0; i < div.length; i++) {
       div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = color);
     }
+  }
+}
+// ----------------------------------------- //
+function deleteGrid() {
+  const sketchpad = document.querySelector('.sketchpad');
+  let nodes = sketchpad.childNodes.length;
+
+  for (let i = 0; i < nodes; i++) {
+    sketchpad.removeChild(sketchpad.firstElementChild);
+  }
+}
+// ----------------------------------------- //
+function resetGrid(squares) {
+  deleteGrid();
+  createGrid(squares);
+  btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
+  gridSize.value = squares;
+}
+// ----------------------------------------- //
+function resizeGrid(squares) {
+  squares = prompt('Edge length in squares? (Max. is 64) ', '16')
+
+  if (squares <= 64) {
+    deleteGrid();
+    createGrid(squares);
+    btnSquares.textContent = ('Grid Size ' + squares + 'x' + squares);
+  } else {
+    resizeGrid()
+  }
+  gridSize.value = squares;
+}
+// ----------------------------------------- //
+function toggleGridLines() {
+  const myNodeList = document.querySelectorAll('.myDiv');
+  for (let i = 0; i < myNodeList.length; i++) {
+    myNodeList[i].classList.toggle('gridlines');
+  }
+}
+// ----------------------------------------- //
+function setBackground(color) {
+  const myNodeList = document.querySelectorAll('.myDiv');
+  for (let i = 0; i < myNodeList.length; i++) {
+    myNodeList[i].style.backgroundColor = color;
   }
 }
 // ----------------------------------------- //

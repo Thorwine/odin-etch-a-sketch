@@ -54,7 +54,7 @@ input[type=range]::-webkit-slider-runnable-track {
 .header {
   margin-top: 50px;
   color: #a2a86a;
-  font-size: 100px;
+  font-size: 30px;
   text-align: center;
   box-shadow: 2px 5px 20px black;
 }
