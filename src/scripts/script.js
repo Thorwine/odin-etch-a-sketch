@@ -50,14 +50,6 @@ createGrid(16);
 // --------------- FUNCTIONS --------------- //
 
 function togglePen() {
-
-  // const div = document.querySelectorAll('.sketchpad .myDiv');
-  // for (let i = 0; i < div.length; i++) {
-  //   div[i].addEventListener('click', function () {
-  //     div[i].style.backgroundColor = ('black');
-  //   });
-  // }
-
   if (penActive === false) {
     penActive = true;
   } else {
