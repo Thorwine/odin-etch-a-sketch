@@ -37,15 +37,34 @@ btnEraser.addEventListener('click', () => setColor(backgroundColor.value));
 
 // button reset grid
 const btnReset = document.querySelector('#btnReset');
-btnReset.addEventListener('click', () => resetGrid(squares));
+btnReset.addEventListener('click', () => resetGrid(gridSize.value));
 
 // MAIN //
 
-// create grid on startup with fixed edgeLength
-let squares = 16;
-createGrid(squares);
+let penActive = false;
+const sketchpad = document.querySelector('.sketchpad').addEventListener('click', togglePen);
+
+// create grid on startup
+createGrid(16);
 
 // --------------- FUNCTIONS --------------- //
+
+function togglePen() {
+
+  // const div = document.querySelectorAll('.sketchpad .myDiv');
+  // for (let i = 0; i < div.length; i++) {
+  //   div[i].addEventListener('click', function () {
+  //     div[i].style.backgroundColor = ('black');
+  //   });
+  // }
+
+  if (penActive === false) {
+    penActive = true;
+  } else {
+    penActive = false;
+  }
+}
+// ----------------------------------------- //
 function createGrid(squares) {
 
   let gridSize = squares * squares;
@@ -70,7 +89,11 @@ function setColor(color) {
   if (color === 'random') {
     for (let i = 0; i < div.length; i++) {
       let randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-      div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = randomColor);
+      div[i].addEventListener('mouseover', function () {
+        if (penActive === true) {
+          div[i].style.backgroundColor = randomColor;
+        }
+      });
     }
   } else if (color === 'fader') {
     let rgb = 255;
@@ -79,13 +102,19 @@ function setColor(color) {
       div[i].addEventListener('mouseover', function () {
         rgb = rgb - 5;
         faderColor = 'rgb(' + rgb + ',' + rgb + ',' + rgb + ')';
-        div[i].style.backgroundColor = faderColor;
+        if (penActive === true) {
+          div[i].style.backgroundColor = faderColor;
+        }
       });
     }
   }
   else {
     for (let i = 0; i < div.length; i++) {
-      div[i].addEventListener('mouseover', () => div[i].style.backgroundColor = color);
+      div[i].addEventListener('mouseover', function () {
+        if (penActive === true) {
+          div[i].style.backgroundColor = color;
+        }
+      });
     }
   }
 }
